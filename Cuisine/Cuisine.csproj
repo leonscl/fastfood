@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFAC1B8D-8C37-425C-8FFC-E843A1348260}</ProjectGuid>
+    <ProjectGuid>{97F0A07E-7C28-4D20-A155-E7D809C544DE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>fastfood</RootNamespace>
-    <AssemblyName>fastfood</AssemblyName>
+    <RootNamespace>Cuisine</RootNamespace>
+    <AssemblyName>Cuisine</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChefCuisine.cs" />
+    <Compile Include="ChefPartie.cs" />
+    <Compile Include="CounterDishes.cs" />
+    <Compile Include="CounterOrder.cs" />
+    <Compile Include="CounterPlate.cs" />
+    <Compile Include="Dish.cs" />
+    <Compile Include="DishReady.cs" />
+    <Compile Include="Kitchen.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
