@@ -15,7 +15,7 @@ namespace Rattrapage_MCI.Model
         //constructeur
         public Card(int quantity)
         {
-            cardQuantity = quantity;
+            quantity = 1;
 
             plats = new List<string> { "burger", "frites", "salade" };
 

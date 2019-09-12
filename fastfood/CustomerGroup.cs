@@ -87,7 +87,7 @@ namespace Rattrapage_MCI.Model
         public void ChooseOrder(Card card)
         {
             Random rand = new Random();
-
+            //card.CardQuantity = 1;
          
             Plats.Add(card.Plats[rand.Next(0, 3)]);
             

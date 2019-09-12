@@ -37,8 +37,10 @@ namespace Rattrapage_MCI.Model
         public void RankChiefWorkThread()
         {
             Console.WriteLine("Thread Serveur n° " + Id + " pret." );
-            group1 = new CustomerGroup();
-            group1.StateGroup = "ordering";
+            group1 = new CustomerGroup
+            {
+                StateGroup = "ordering"
+            };
             while (true)
             {
                 if (ToDoRankChief.Count != 0)
