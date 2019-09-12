@@ -18,6 +18,7 @@ namespace Rattrapage_MCI.Model
         private static int idTrack = 0;
         private List<Actions> toDoRankChief = null;
         private actionDelegate theDelagate;
+        private CustomerGroup group1;
 
         //Constructeur
         public RankChief()
@@ -35,8 +36,9 @@ namespace Rattrapage_MCI.Model
         //thread du RankChief
         public void RankChiefWorkThread()
         {
-            Console.WriteLine("Thread Chef de rang " + Id + " pret." );
-
+            Console.WriteLine("Thread Serveur n° " + Id + " pret." );
+            group1 = new CustomerGroup();
+            group1.StateGroup = "ordering";
             while (true)
             {
                 if (ToDoRankChief.Count != 0)
@@ -45,6 +47,7 @@ namespace Rattrapage_MCI.Model
                     theDelagate = ToDoRankChief.First().MyFunctionDelegate;
                     theDelagate(ToDoRankChief.First().Group);
                     ToDoRankChief.Remove(ToDoRankChief.First());
+
                 }
                 Thread.Sleep(1000);
             }

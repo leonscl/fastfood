@@ -33,11 +33,10 @@ namespace Rattrapage_MCI.Model
             IdIncrementor++;
 
             CustomerGroup = group;
-            Table = group.Table;
 
-            Entriees = group.Entriees;
+           
             Plats = group.Plats;
-            Deserts = group.Deserts;
+            
 
             foreach (string entry in Entriees)
             {
@@ -62,7 +61,6 @@ namespace Rattrapage_MCI.Model
         public int IdOrder { get => idOrder; set => idOrder = value; }
         internal CustomerGroup CustomerGroup { get => customerGroup; set => customerGroup = value; }
         public static int IdIncrementor { get => idIncrementor; set => idIncrementor = value; }
-        internal Table Table { get => table; set => table = value; }
         public List<string> Entriees { get => entriees; set => entriees = value; }
         public List<string> Deserts { get => deserts; set => deserts = value; }
         internal List<Dish> WaitingDish { get => waitingDish; set => waitingDish = value; }

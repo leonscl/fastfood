@@ -9,7 +9,6 @@ namespace Cuisine
 {
     class ChefCuisine
     { 
-
         //Propriétés
         private Thread chefCuisineThread;
 
@@ -22,6 +21,7 @@ namespace Cuisine
             chefCuisine = new ChefCuisine();
             ChefCuisineThread = new Thread(ChefCuisineWorkThread);
             ChefCuisineThread.Start();
+            //ThreadPool.QueueUserWorkItem(Cuisine);
         }
 
         private Order order;
