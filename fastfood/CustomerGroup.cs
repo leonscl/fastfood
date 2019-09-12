@@ -58,10 +58,6 @@ namespace Rattrapage_MCI.Model
                 {
                     switch (StateGroup)
                     {
-                        case "paid":
-                            Paid();
-                            break;
-
                         case "waiting":
                             Console.WriteLine("Le groupe n° " + IdCustomer + " est en attente");
                             Thread.Sleep(6000);
@@ -75,14 +71,11 @@ namespace Rattrapage_MCI.Model
                         case "eating":
                             Eat();
                             break;
-
-                        case "waitingRid":
-                            Console.WriteLine("Le groupe n° " + IdCustomer + " attend que le serveur débarasse les plats");
-                            Thread.Sleep(5000);
+                        case "ended_good":
+                            Console.WriteLine("On a fini et on a aimé");
                             break;
-
-                        case "cash out":
-                            CashOut();
+                        case "ended bad":
+                            Console.WriteLine("On a fini mais ce n'était pas bon");
                             break;
                     }
                     Thread.Sleep(1000);
@@ -93,8 +86,6 @@ namespace Rattrapage_MCI.Model
             {
                 Console.WriteLine("Le groupe n° " + IdCustomer + " est partis ");
             }
-
-
         }
 
         //méthode pour choisir ce qu'ils vont manger (rand pour simuler des choix différents)
@@ -104,9 +95,7 @@ namespace Rattrapage_MCI.Model
 
             for (int i = 0 ; i<= CustomerNumber; i++)
             {
-                Entriees.Add(card.Entriees[rand.Next(0, 3)]);
-                Plats.Add(card.Plats[rand.Next(0, 3)]);
-                Deserts.Add(card.Deserts[rand.Next(0, 3)]);
+                Plats.Add(card.Plats[1]);   
             }
 
             StateGroup = "OrderComplete";
@@ -129,7 +118,18 @@ namespace Rattrapage_MCI.Model
             {
                 Console.WriteLine("Le groupe n°" + IdCustomer + " mange son Plat.");
                 Thread.Sleep(25000);
-                StateGroup = "waitingRid";
+                Random aleatoire = new Random();
+                int satisfaction = aleatoire.Next(0, 1); // Génère un aléatoire pour déterminer 
+                switch (satisfaction)
+                {
+                    case (0):
+                        stateGroup = "ended good";
+                        break;
+                    case (1):
+                        stateGroup = "ended bad";
+                        break;
+                }
+                Console.WriteLine(stateGroup);
             }
 
             //récupérer la liste des waiters suivant le carré donc suivant où sont les clients
@@ -142,30 +142,6 @@ namespace Rattrapage_MCI.Model
 
         }
 
-
-        public void CashOut()
-        {
-            Move("Table", "le HeadWaiter");
-            Table.CustomerGroup = null;
-            Room.Instance.WaitingPay.Groups.Add(this);
-            StateGroup = "waitingPay";
-        }
-
-
-        public void Paid()
-        {
-            if(this.CanbeDeleted == true)
-            {
-                Table = null;
-                Order = null;
-                CurrentMeal = null;
-                Room.Instance.WaitingPay.EndGroups.Remove(this);
-                StateGroup = null;
-                groupThread.Abort(this);
-
-            }
-        }
-
         public void Move(string depart, string arrivée)
         {
             Console.WriteLine("Le groupe de déplace de " + depart + " vers " + arrivée);
@@ -174,7 +150,6 @@ namespace Rattrapage_MCI.Model
         //getter et setter
         public int CustomerNumber { get => customerNumber; set => customerNumber = value; }
         public int IdCustomer { get => idCustomer; set => idCustomer = value; }
-        internal Table Table { get => table; set => table = value; }
         public static int IdCustomerTrack { get => idCustomerTrack; set => idCustomerTrack = value; }
         public string StateGroup { get => stateGroup; set => stateGroup = value; }
         

@@ -93,36 +93,16 @@ namespace Rattrapage_MCI.Model
             Order order = Room.Instance.CurrentOrders.Find(x => x.IdOrder == int.Parse(dishes[0]));
 
             List<string> myDish = new List<string>();
-            if (dishes[1] == "entrees")
-            {
-                myDish = order.Entriees;
-            }
-            else if(dishes[1] == "plats")
+            if(dishes[1] == "plats")
             {
                 myDish = order.Plats;
-            }
-            else if (dishes[1] == "desserts")
-            {
-                myDish = order.Deserts;
             }
 
             //instancier l'objet Dish et ajouter Dish à l'order et la waitingDish
             Dish theDish = new Dish(order, dishes[1], myDish);
             order.WaitingDish.Add(theDish);
             WaitingDishs.Add(theDish);
-
-            //récupérer la liste des waiters suivant le carré donc suivant où sont les clients
-            List<Waiter> waiters = order.CustomerGroup.Table.TheSquare.Waiters;
-
-            //récupérer le waiter qui a la liste de chose à faire la moins grande
-            Waiter theWaiter = waiters.OrderBy(x => x.ToDoWaiter.Count()).First();
-
-            //Ajout de l'action à la toDoliste pour le waiter
-            actionDelegate myActionDelegate = new actionDelegate(theWaiter.ServeClient);
-            Actions toDo = new Actions(myActionDelegate, order.CustomerGroup);
-            theWaiter.ToDoWaiter.Add(toDo);
         }
-
 
         //getter et setter
         public int Port { get => port; set => port = value; }

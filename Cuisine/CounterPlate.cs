@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Rattrapage_MCI_cuisine
+namespace Cuisine
 {
     class CounterPlate
     {

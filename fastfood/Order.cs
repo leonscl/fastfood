@@ -15,7 +15,6 @@ namespace Rattrapage_MCI.Model
         private int idOrder;
         private static int idIncrementor = 0;
         private CustomerGroup customerGroup;
-        private Table table;
         [DataMember]
         private List<string> entriees;
         [DataMember]

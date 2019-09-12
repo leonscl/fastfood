@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rattrapage_MCI_cuisine
+namespace Cuisine
 {
     [DataContract]
     class Dish
@@ -23,11 +23,6 @@ namespace Rattrapage_MCI_cuisine
         /// Unique idnetifier of a dish
         /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// Recipe of the dish ordered
-        /// </summary>
-        public Recette Recipe { get; set; }
 
         /// <summary>
         /// State of the dish

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rattrapage_MCI_cuisine
+namespace Cuisine
 {
     [DataContract]
     class Order
@@ -21,9 +21,7 @@ namespace Rattrapage_MCI_cuisine
         private List<string> deserts;
 
         public int IdOrder { get => idOrder; set => idOrder = value; }
-        public List<string> Entriees { get => entriees; set => entriees = value; }
         public List<string> Plats { get => plats; set => plats = value; }
-        public List<string> Deserts { get => deserts; set => deserts = value; }
 
        
         public List<Dish> Dishes { get; set; }

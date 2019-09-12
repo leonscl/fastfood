@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rattrapage_MCI_cuisine
+namespace Cuisine
 {
     class Kitchen
     {
@@ -24,8 +24,6 @@ namespace Rattrapage_MCI_cuisine
             counterDishes = new CounterDishes();
             counterPlate = new CounterPlate();
 
-            chefCuisine1 = new ChefCuisine();
-            chefCuisine = new ChefCuisine();
             Console.WriteLine("Cuisine prête");
         }
 

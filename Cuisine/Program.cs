@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rattrapage_MCI_cuisine
+namespace Cuisine
 {
     class Program
     {

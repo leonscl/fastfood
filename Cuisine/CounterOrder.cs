@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
+using System.Runtime.Serialization.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Rattrapage_MCI_cuisine
+namespace Cuisine
 {
     class CounterOrder
     {
@@ -48,7 +49,7 @@ namespace Rattrapage_MCI_cuisine
                 // Enter the listening loop.
                 while (true)
                 {
-                    Console.WriteLine("Le comptoire des commandes attend... ");
+                    Console.WriteLine("Le comptoir des commandes attend... ");
 
                     // Perform a blocking call to accept requests.
                     TcpClient client = server.AcceptTcpClient();
@@ -67,7 +68,7 @@ namespace Rattrapage_MCI_cuisine
                     Console.Write("JSON form of Person object: ");
                     Console.WriteLine(sr.ReadToEnd());*/
 
-                    //créer mon objet à partir de mon Json et afficher id ce la commande pour vérifier
+                    //créer mon objet à partir de mon Json et afficher id de la commande pour vérifier
                     DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Order));
                     stream1.Position = 0;
                     Order newOrder = (Order)ser.ReadObject(stream1);

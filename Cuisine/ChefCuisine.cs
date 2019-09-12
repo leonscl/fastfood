@@ -5,15 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Rattrapage_MCI_cuisine
+namespace Cuisine
 {
     class ChefCuisine
-    {
-        
-        public List<ChefPartie> Cookers { get; set; }
-
-        private ChefPartie chefPartie1;
-        private ChefPartie chefPartie2;
+    { 
 
         //Propriétés
         private Thread chefCuisineThread;
@@ -23,15 +18,16 @@ namespace Rattrapage_MCI_cuisine
 
         public ChefCuisine()
         {
+            chefCuisine1 = new ChefCuisine();
+            chefCuisine = new ChefCuisine();
             ChefCuisineThread = new Thread(ChefCuisineWorkThread);
             ChefCuisineThread.Start();
-
-            ChefPartie1 = new ChefPartie(1);
-            ChefPartie2 = new ChefPartie(2);
         }
 
         private Order order;
         private List<Order> liste_commande;
+        private ChefCuisine chefCuisine1;
+        private ChefCuisine chefCuisine;
 
 
         //thread du Chef de cuisine
@@ -48,18 +44,18 @@ namespace Rattrapage_MCI_cuisine
                     Console.WriteLine("Chef Cuisine : Commande reçue");
                     Order = Liste_commande.First();
                     Thread.Sleep(2000);
-                    if (ChefPartie1.IsAvailable == true)
+                    if (chefCuisine.IsAvailable == true)
                     {
-                        ChefPartie1.PrepareReady(Order);
+                        chefCuisine.PrepareReady(Order);
                         Console.WriteLine("ChefPartie1 s'occupe de la commande");
-                        ChefPartie1.IsAvailable = false;
+                        chefCuisine.IsAvailable = false;
                     }
 
-                    else if (ChefPartie2.IsAvailable == true)
+                    else if (chefCuisine1.IsAvailable == true)
                     {
-                        ChefPartie2.PrepareReady(Order);
+                        chefCuisine1.PrepareReady(Order);
                         Console.WriteLine("ChefPartie2 s'occupe de la commande");
-                        ChefPartie2.IsAvailable = false;
+                        chefCuisine1.IsAvailable = false;
                     }
 
                     Liste_commande.Remove(Order);
@@ -85,8 +81,6 @@ namespace Rattrapage_MCI_cuisine
 
         internal Order Order { get => order; set => order = value; }
         internal List<Order> Liste_commande { get => liste_commande; set => liste_commande = value; }
-        internal ChefPartie ChefPartie1 { get => chefPartie1; set => chefPartie1 = value; }
-        internal ChefPartie ChefPartie2 { get => chefPartie2; set => chefPartie2 = value; }
         public Thread ChefCuisineThread { get => chefCuisineThread; set => chefCuisineThread = value; }
     }
 }
